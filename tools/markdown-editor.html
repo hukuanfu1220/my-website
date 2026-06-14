@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markdown 在线编辑器 — 实时预览 | MyTools</title>
+    <meta name="description" content="免费在线 Markdown 编辑器，支持实时预览、语法高亮、代码块渲染。写文档、笔记、博客，一键导出 HTML。">
+    <meta name="keywords" content="Markdown编辑器,在线Markdown,Markdown实时预览,Markdown工具,在线编辑器">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://hukuanfu1220.github.io/my-website/tools/markdown-editor.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Markdown 在线编辑器 — 实时预览 | MyTools">
+    <meta property="og:description" content="免费在线 Markdown 编辑器，支持实时预览。">
+    <meta property="og:url" content="https://hukuanfu1220.github.io/my-website/tools/markdown-editor.html">
+    <meta property="og:locale" content="zh_CN">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect x='10' y='10' width='80' height='80' rx='15' fill='%236c5ce7'/><text x='50' y='68' text-anchor='middle' font-size='50' fill='white'>🛠</text></svg>">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">🛠 MyTools</a>
+            <ul class="nav-links">
+                <li><a href="index.html">工具箱</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="tool-page-header">
+        <h1>📝 Markdown 在线编辑器</h1>
+        <p>左侧编辑，右侧实时预览</p>
+    </header>
+
+    <main class="tool-container">
+        <div class="tool-box">
+            <div class="editor-layout">
+                <textarea id="markdownInput" placeholder="# 在这里输入 Markdown&#10;&#10;支持常用语法：&#10;## 标题&#10;**粗体** *斜体*&#10;- 列表项&#10;> 引用&#10;`代码`&#10;[链接](https://example.com)"><h1>Hello Markdown</h1>
+<p>这是一个 <strong>实时预览</strong> 的 <em>Markdown 编辑器</em>。</p>
+
+## 功能特性
+
+- 实时预览
+- 代码块高亮
+- 支持表格
+
+### 代码示例
+
+\`\`\`javascript
+console.log("Hello World!");
+\`\`\`
+
+> 好的工具让写作更简单
+
+开始输入内容吧！</textarea>
+                <div class="preview-panel" id="preview"></div>
+            </div>
+        </div>
+
+        <div class="tool-box">
+            <div class="btn-group">
+                <button class="btn btn-primary" onclick="copyHTML()">📋 复制 HTML</button>
+                <button class="btn btn-secondary" onclick="copyMarkdown()">📄 复制 Markdown</button>
+                <button class="btn btn-secondary" onclick="clearAll()">🗑 清空</button>
+                <button class="btn btn-secondary" onclick="loadSample()">📑 加载示例</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 MyTools — 所有处理在浏览器本地完成，数据不会上传。</p>
+    </footer>
+
+    <div class="copied-toast" id="toast">已复制到剪贴板！</div>
+
+    <script src="js/main.js"></script>
+    <script src="js/markdown-editor.js"></script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>二维码生成器 — 在线免费生成高清二维码 | MyTools</title>
+    <meta name="description" content="免费在线二维码生成器，支持文字转二维码、链接转二维码。生成高清图片，一键复制下载，无需注册。">
+    <meta name="keywords" content="二维码生成器,在线二维码,二维码制作,免费二维码,二维码工具,QR Code">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://hukuanfu1220.github.io/my-website/tools/qr-code.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="二维码生成器 — 免费在线 | MyTools">
+    <meta property="og:description" content="免费在线二维码生成器，支持文字转二维码、链接转二维码。">
+    <meta property="og:url" content="https://hukuanfu1220.github.io/my-website/tools/qr-code.html">
+    <meta property="og:locale" content="zh_CN">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect x='10' y='10' width='80' height='80' rx='15' fill='%236c5ce7'/><text x='50' y='68' text-anchor='middle' font-size='50' fill='white'>🛠</text></svg>">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">🛠 MyTools</a>
+            <ul class="nav-links">
+                <li><a href="index.html">工具箱</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="tool-page-header">
+        <h1>📱 二维码生成器</h1>
+        <p>输入文字或网址，一键生成高清二维码</p>
+    </header>
+
+    <main class="tool-container">
+        <div class="tool-box">
+            <div class="input-group">
+                <label for="qrText">输入文字或网址</label>
+                <textarea id="qrText" placeholder="输入文字、网址或任何内容..." style="min-height:100px">https://hukuanfu1220.github.io/my-website/</textarea>
+            </div>
+            <div class="btn-group">
+                <button class="btn btn-primary" onclick="generateQR()">⚡ 生成二维码</button>
+                <button class="btn btn-secondary" onclick="copyQR()">📋 复制图片</button>
+            </div>
+        </div>
+
+        <div class="tool-box">
+            <h3>二维码预览</h3>
+            <div class="qr-output" id="qrOutput">
+                <p style="color:var(--gray)">点击上方按钮生成二维码</p>
+            </div>
+        </div>
+
+        <div class="tool-box">
+            <h3>使用说明</h3>
+            <ul style="padding-left:1.5rem; color:var(--gray); line-height:2;">
+                <li>输入任意文字或网址</li>
+                <li>点击"生成二维码"按钮</li>
+                <li>可以复制生成的二维码图片</li>
+                <li>生成的二维码支持微信、支付宝等扫码</li>
+                <li>所有处理在浏览器本地完成，不会上传任何数据</li>
+            </ul>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 MyTools — 所有处理在浏览器本地完成，数据不会上传。</p>
+    </footer>
+
+    <div class="copied-toast" id="toast">已复制到剪贴板！</div>
+
+    <script src="js/main.js"></script>
+    <script src="js/qr-code.js"></script>
+</body>
+</html>
