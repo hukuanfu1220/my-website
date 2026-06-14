@@ -1,4 +1,4 @@
-// 二维码生成器逻辑
+// 二维码生成器
 
 function generateQR() {
     const text = document.getElementById('qrText').value.trim();
@@ -9,14 +9,51 @@ function generateQR() {
         return;
     }
     
-    // 使用 Google Charts API 生成二维码
-    const encoded = encodeURIComponent(text);
-    const url = `https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=${encoded}&choe=utf-8`;
+    // 清除之前的二维码
+    output.innerHTML = '<p style="color:var(--gray)">生成中...</p>';
     
-    output.innerHTML = `
-        <img src="${url}" alt="二维码 - ${text}" id="qrImage">
-        <p style="margin-top:1rem; color:var(--gray); font-size:0.9rem;">${text}</p>
-    `;
+    // 使用多个备选 API，提高成功率
+    const apis = [
+        `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(text)}`,
+        `https://api.qrenco.de/${encodeURIComponent(text)}`,
+        `https://api.allorigins.win/raw?url=${encodeURIComponent(`https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(text)}`)}`
+    ];
+    
+    let apiIndex = 0;
+    
+    function tryApi() {
+        if (apiIndex >= apis.length) {
+            output.innerHTML = '<p style="color:var(--warning)">二维码服务暂时不可用，请稍后重试</p>';
+            return;
+        }
+        
+        const url = apis[apiIndex];
+        const img = document.createElement('img');
+        img.alt = `二维码 - ${text}`;
+        img.id = 'qrImage';
+        img.style.cssText = 'max-width:250px; border-radius:8px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);';
+        img.src = url;
+        
+        img.onerror = function() {
+            apiIndex++;
+            output.innerHTML = '<p style="color:var(--gray)">生成中...</p>';
+            tryApi();
+        };
+        
+        img.onload = function() {
+            output.innerHTML = '';
+            output.appendChild(img);
+            const p = document.createElement('p');
+            p.style.cssText = 'margin-top:1rem; color:var(--gray); font-size:0.9rem; word-break:break-all;';
+            p.textContent = text;
+            output.appendChild(p);
+        };
+        
+        output.innerHTML = '';
+        output.appendChild(img);
+    }
+    
+    tryApi();
 }
 
 async function copyQR() {
@@ -25,7 +62,6 @@ async function copyQR() {
         showToast('请先生成二维码');
         return;
     }
-    
     try {
         const response = await fetch(img.src);
         const blob = await response.blob();
