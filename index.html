@@ -3,29 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的网站</title>
+    
+    <!-- SEO 核心 -->
+    <title>hukuanfu — 个人作品集 | Web 开发与创意分享</title>
+    <meta name="description" content="hukuanfu 的个人网站，展示 Web 开发项目、技术笔记和创意作品。专注于高效开发、创意设计和持续学习。">
+    <meta name="keywords" content="个人网站, Web开发, 前端开发, 作品集, 技术博客, 创意设计">
+    <meta name="author" content="hukuanfu">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://hukuanfu1220.github.io/my-website/">
+    
+    <!-- 社交媒体预览 (Open Graph) -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="hukuanfu — 个人作品集">
+    <meta property="og:description" content="展示 Web 开发项目、技术笔记和创意作品。">
+    <meta property="og:url" content="https://hukuanfu1220.github.io/my-website/">
+    <meta property="og:site_name" content="hukuanfu Personal Site">
+    <meta property="og:locale" content="zh_CN">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="hukuanfu — 个人作品集">
+    <meta name="twitter:description" content="展示 Web 开发项目、技术笔记和创意作品。">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
+    
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <!-- 导航栏 -->
     <nav>
         <div class="nav-container">
-            <a href="index.html" class="nav-logo">MySite</a>
+            <a href="index.html" class="nav-logo" title="回到首页">MySite</a>
             <ul class="nav-links" id="navLinks">
-                <li><a href="index.html" class="active">首页</a></li>
-                <li><a href="about.html">关于</a></li>
-                <li><a href="contact.html">联系</a></li>
+                <li><a href="index.html" class="active" aria-label="首页">首页</a></li>
+                <li><a href="about.html" aria-label="关于我">关于</a></li>
+                <li><a href="contact.html" aria-label="联系我">联系</a></li>
             </ul>
-            <div class="hamburger" id="hamburger">
+            <button class="hamburger" id="hamburger" aria-label="切换导航菜单" aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
+            </button>
         </div>
     </nav>
 
     <!-- Hero -->
-    <section class="hero">
+    <header class="hero">
         <div class="hero-content">
             <h1>欢迎来到我的个人空间</h1>
             <p>探索、创造、分享——在这里记录我的思考与作品</p>
@@ -34,85 +58,105 @@
                 <a href="contact.html" class="btn btn-outline">联系我</a>
             </div>
         </div>
-    </section>
+    </header>
 
-    <!-- 特性介绍 -->
-    <section class="section">
-        <div class="container">
-            <div class="section-title animate-on-scroll">
-                <h2>特色功能</h2>
-                <p>这里展示了我擅长和热爱的领域</p>
+    <main>
+        <!-- 特性介绍 -->
+        <section class="section" aria-labelledby="features-heading">
+            <div class="container">
+                <div class="section-title animate-on-scroll">
+                    <h2 id="features-heading">特色功能</h2>
+                    <p>这里展示了我擅长和热爱的领域</p>
+                </div>
+                <div class="features-grid">
+                    <article class="feature-card animate-on-scroll">
+                        <div class="feature-icon" role="img" aria-label="火箭图标">🚀</div>
+                        <h3>高效开发</h3>
+                        <p>专注于构建快速、可靠的 Web 应用，追求极致的用户体验</p>
+                    </article>
+                    <article class="feature-card animate-on-scroll">
+                        <div class="feature-icon" role="img" aria-label="调色板图标">🎨</div>
+                        <h3>创意设计</h3>
+                        <p>将美学与功能结合，打造令人眼前一见的界面设计</p>
+                    </article>
+                    <article class="feature-card animate-on-scroll">
+                        <div class="feature-icon" role="img" aria-label="灯泡图标">💡</div>
+                        <h3>创新思维</h3>
+                        <p>善于发现问题本质，用创新的方案解决复杂挑战</p>
+                    </article>
+                    <article class="feature-card animate-on-scroll">
+                        <div class="feature-icon" role="img" aria-label="握手图标">🤝</div>
+                        <h3>团队协作</h3>
+                        <p>良好的沟通能力，能与团队高效协作，共同达成目标</p>
+                    </article>
+                    <article class="feature-card animate-on-scroll">
+                        <div class="feature-icon" role="img" aria-label="书本图标">📚</div>
+                        <h3>持续学习</h3>
+                        <p>保持好奇心，不断吸收新技术，紧跟行业前沿发展</p>
+                    </article>
+                    <article class="feature-card animate-on-scroll">
+                        <div class="feature-icon" role="img" aria-label="闪电图标">⚡</div>
+                        <h3>解决问题</h3>
+                        <p>面对难题冷静分析，快速定位并高效解决各类问题</p>
+                    </article>
+                </div>
             </div>
-            <div class="features-grid">
-                <div class="feature-card animate-on-scroll">
-                    <div class="feature-icon">🚀</div>
-                    <h3>高效开发</h3>
-                    <p>专注于构建快速、可靠的 Web 应用，追求极致的用户体验</p>
-                </div>
-                <div class="feature-card animate-on-scroll">
-                    <div class="feature-icon">🎨</div>
-                    <h3>创意设计</h3>
-                    <p>将美学与功能结合，打造令人眼前一见的界面设计</p>
-                </div>
-                <div class="feature-card animate-on-scroll">
-                    <div class="feature-icon">💡</div>
-                    <h3>创新思维</h3>
-                    <p>善于发现问题本质，用创新的方案解决复杂挑战</p>
-                </div>
-                <div class="feature-card animate-on-scroll">
-                    <div class="feature-icon">🤝</div>
-                    <h3>团队协作</h3>
-                    <p>良好的沟通能力，能与团队高效协作，共同达成目标</p>
-                </div>
-                <div class="feature-card animate-on-scroll">
-                    <div class="feature-icon">📚</div>
-                    <h3>持续学习</h3>
-                    <p>保持好奇心，不断吸收新技术，紧跟行业前沿发展</p>
-                </div>
-                <div class="feature-card animate-on-scroll">
-                    <div class="feature-icon">⚡</div>
-                    <h3>解决问题</h3>
-                    <p>面对难题冷静分析，快速定位并高效解决各类问题</p>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- 统计数据 -->
-    <section class="section section-dark">
-        <div class="container">
-            <div class="stats">
-                <div class="stat-item animate-on-scroll">
-                    <h3>10+</h3>
-                    <p>完成项目</p>
-                </div>
-                <div class="stat-item animate-on-scroll">
-                    <h3>3+</h3>
-                    <p>年开发经验</p>
-                </div>
-                <div class="stat-item animate-on-scroll">
-                    <h3>50+</h3>
-                    <p>技术文章</p>
-                </div>
-                <div class="stat-item animate-on-scroll">
-                    <h3>∞</h3>
-                    <p>学习热情</p>
+        <!-- 统计数据 -->
+        <section class="section section-dark" aria-labelledby="stats-heading">
+            <div class="container">
+                <h2 id="stats-heading" class="sr-only">统计数据</h2>
+                <div class="stats">
+                    <div class="stat-item animate-on-scroll">
+                        <h3>10+</h3>
+                        <p>完成项目</p>
+                    </div>
+                    <div class="stat-item animate-on-scroll">
+                        <h3>3+</h3>
+                        <p>年开发经验</p>
+                    </div>
+                    <div class="stat-item animate-on-scroll">
+                        <h3>50+</h3>
+                        <p>技术文章</p>
+                    </div>
+                    <div class="stat-item animate-on-scroll">
+                        <h3>∞</h3>
+                        <p>学习热情</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <!-- 页脚 -->
     <footer>
         <div class="footer-content">
-            <div class="footer-links">
-                <a href="index.html">首页</a>
-                <a href="about.html">关于</a>
-                <a href="contact.html">联系</a>
-            </div>
-            <p>&copy; 2025 MySite. All rights reserved.</p>
+            <nav aria-label="页脚导航">
+                <div class="footer-links">
+                    <a href="index.html">首页</a>
+                    <a href="about.html">关于</a>
+                    <a href="contact.html">联系</a>
+                </div>
+            </nav>
+            <p>&copy; 2025 hukuanfu. All rights reserved.</p>
         </div>
     </footer>
+
+    <!-- 结构化数据 (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "hukuanfu — 个人作品集",
+        "description": "hukuanfu 的个人网站，展示 Web 开发项目、技术笔记和创意作品。",
+        "url": "https://hukuanfu1220.github.io/my-website/",
+        "author": {
+            "@type": "Person",
+            "name": "hukuanfu"
+        }
+    }
+    </script>
 
     <script src="js/main.js"></script>
 </body>

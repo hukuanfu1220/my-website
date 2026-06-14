@@ -1,0 +1,6 @@
+# robots.txt — 允许所有搜索引擎抓取
+User-agent: *
+Allow: /
+
+# Sitemap 位置
+Sitemap: https://hukuanfu1220.github.io/my-website/sitemap.xml

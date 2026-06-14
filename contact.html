@@ -3,95 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>联系我</title>
+    
+    <!-- SEO 核心 -->
+    <title>联系我 | hukuanfu — 商务合作与技术咨询</title>
+    <meta name="description" content="与 hukuanfu 取得联系，探讨商务合作、技术咨询或项目合作。通常 24 小时内回复。">
+    <meta name="author" content="hukuanfu">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://hukuanfu1220.github.io/my-website/contact.html">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="联系我 | hukuanfu">
+    <meta property="og:description" content="与 hukuanfu 取得联系，探讨商务合作、技术咨询或项目合作。">
+    <meta property="og:url" content="https://hukuanfu1220.github.io/my-website/contact.html">
+    <meta property="og:locale" content="zh_CN">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="联系我 | hukuanfu">
+    <meta name="twitter:description" content="与 hukuanfu 取得联系，探讨商务合作、技术咨询或项目合作。">
+    
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <!-- 导航栏 -->
     <nav>
         <div class="nav-container">
-            <a href="index.html" class="nav-logo">MySite</a>
+            <a href="index.html" class="nav-logo" title="回到首页">MySite</a>
             <ul class="nav-links" id="navLinks">
                 <li><a href="index.html">首页</a></li>
                 <li><a href="about.html">关于</a></li>
-                <li><a href="contact.html" class="active">联系</a></li>
+                <li><a href="contact.html" class="active" aria-label="联系我">联系</a></li>
             </ul>
-            <div class="hamburger" id="hamburger">
+            <button class="hamburger" id="hamburger" aria-label="切换导航菜单" aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
+            </button>
         </div>
     </nav>
 
-    <!-- 联系 Hero -->
-    <section class="contact-hero">
+    <header class="contact-hero">
         <h1>联系我</h1>
         <p>有任何想法或合作意向？随时与我取得联系</p>
-    </section>
+    </header>
 
-    <!-- 联系内容 -->
-    <section class="contact-content">
-        <div class="container">
-            <div class="contact-grid">
-                <div class="contact-info animate-on-scroll">
-                    <div class="contact-item">
-                        <div class="contact-item-icon">📧</div>
-                        <div>
-                            <h4>邮箱</h4>
-                            <p>hukuanfu@example.com</p>
+    <main>
+        <section class="contact-content">
+            <div class="container">
+                <div class="contact-grid">
+                    <div class="contact-info animate-on-scroll">
+                        <div class="contact-item">
+                            <div class="contact-item-icon" role="img" aria-label="邮箱图标">📧</div>
+                            <div>
+                                <h4>邮箱</h4>
+                                <p><a href="mailto:hukuanfu@example.com">hukuanfu@example.com</a></p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-item-icon" role="img" aria-label="GitHub 图标">🐙</div>
+                            <div>
+                                <h4>GitHub</h4>
+                                <p><a href="https://github.com/hukuanfu1220" target="_blank" rel="noopener noreferrer">github.com/hukuanfu1220</a></p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-item-icon" role="img" aria-label="位置图标">📍</div>
+                            <div>
+                                <h4>位置</h4>
+                                <p>中国</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-item-icon" role="img" aria-label="时钟图标">⏰</div>
+                            <div>
+                                <h4>响应时间</h4>
+                                <p>通常 24 小时内回复</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="contact-item">
-                        <div class="contact-item-icon">🐙</div>
-                        <div>
-                            <h4>GitHub</h4>
-                            <p>github.com/hukuanfu1220</p>
+                    <form class="contact-form animate-on-scroll" onsubmit="handleSubmit(event)" aria-label="联系表单">
+                        <div class="form-group">
+                            <label for="name">姓名</label>
+                            <input type="text" id="name" name="name" placeholder="你的名字" required autocomplete="name">
                         </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-item-icon">📍</div>
-                        <div>
-                            <h4>位置</h4>
-                            <p>中国</p>
+                        <div class="form-group">
+                            <label for="email">邮箱</label>
+                            <input type="email" id="email" name="email" placeholder="your@email.com" required autocomplete="email">
                         </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-item-icon">⏰</div>
-                        <div>
-                            <h4>响应时间</h4>
-                            <p>通常 24 小时内回复</p>
+                        <div class="form-group">
+                            <label for="message">留言</label>
+                            <textarea id="message" name="message" placeholder="写下你想说的话..." required></textarea>
                         </div>
-                    </div>
+                        <button type="submit" class="btn-submit">发送消息</button>
+                    </form>
                 </div>
-                <form class="contact-form animate-on-scroll" onsubmit="handleSubmit(event)">
-                    <div class="form-group">
-                        <label for="name">姓名</label>
-                        <input type="text" id="name" placeholder="你的名字" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">邮箱</label>
-                        <input type="email" id="email" placeholder="your@email.com" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">留言</label>
-                        <textarea id="message" placeholder="写下你想说的话..." required></textarea>
-                    </div>
-                    <button type="submit" class="btn-submit">发送消息</button>
-                </form>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <!-- 页脚 -->
     <footer>
         <div class="footer-content">
-            <div class="footer-links">
-                <a href="index.html">首页</a>
-                <a href="about.html">关于</a>
-                <a href="contact.html">联系</a>
-            </div>
-            <p>&copy; 2025 MySite. All rights reserved.</p>
+            <nav aria-label="页脚导航">
+                <div class="footer-links">
+                    <a href="index.html">首页</a>
+                    <a href="about.html">关于</a>
+                    <a href="contact.html">联系</a>
+                </div>
+            </nav>
+            <p>&copy; 2025 hukuanfu. All rights reserved.</p>
         </div>
     </footer>
 

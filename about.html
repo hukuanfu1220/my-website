@@ -3,99 +3,129 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>关于我</title>
+    
+    <!-- SEO 核心 -->
+    <title>关于我 | hukuanfu — Web 开发者与创意创作者</title>
+    <meta name="description" content="了解 hukuanfu 的背景、技能和价值观。一名专注于 Web 开发、持续学习和创意设计的开发者。">
+    <meta name="author" content="hukuanfu">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://hukuanfu1220.github.io/my-website/about.html">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="profile">
+    <meta property="og:title" content="关于我 | hukuanfu">
+    <meta property="og:description" content="了解 hukuanfu 的背景、技能和价值观。">
+    <meta property="og:url" content="https://hukuanfu1220.github.io/my-website/about.html">
+    <meta property="og:locale" content="zh_CN">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="关于我 | hukuanfu">
+    <meta name="twitter:description" content="了解 hukuanfu 的背景、技能和价值观。">
+    
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <!-- 导航栏 -->
     <nav>
         <div class="nav-container">
-            <a href="index.html" class="nav-logo">MySite</a>
+            <a href="index.html" class="nav-logo" title="回到首页">MySite</a>
             <ul class="nav-links" id="navLinks">
                 <li><a href="index.html">首页</a></li>
-                <li><a href="about.html" class="active">关于</a></li>
-                <li><a href="contact.html">联系</a></li>
+                <li><a href="about.html" class="active" aria-label="关于我">关于</a></li>
+                <li><a href="contact.html" aria-label="联系我">联系</a></li>
             </ul>
-            <div class="hamburger" id="hamburger">
+            <button class="hamburger" id="hamburger" aria-label="切换导航菜单" aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
+            </button>
         </div>
     </nav>
 
-    <!-- 关于 Hero -->
-    <section class="about-hero">
+    <header class="about-hero">
         <h1>关于我</h1>
         <p>了解我的故事、经历和价值观</p>
-    </section>
+    </header>
 
-    <!-- 关于内容 -->
-    <section class="about-content">
-        <div class="container">
-            <div class="about-grid">
-                <div class="about-text animate-on-scroll">
-                    <h2>你好，我是 hukuanfu 👋</h2>
-                    <p>我是一名热爱技术与创造的开发者。相信技术可以改变世界，也相信好的工具应该让一切变得更简单。</p>
-                    <p>在这个网站上，我分享我的项目、学习笔记和思考。希望通过这些内容，能与他人产生共鸣、交流想法。</p>
-                </div>
-                <div class="about-text animate-on-scroll">
-                    <h2>我的价值观</h2>
-                    <ul class="values-list">
-                        <li>持续学习，永远保持好奇心</li>
-                        <li>注重细节，追求高质量输出</li>
-                        <li>开放分享，与他人共同成长</li>
-                        <li>解决问题，而非抱怨问题</li>
-                        <li>简洁至上，复杂的事情简单化</li>
-                    </ul>
+    <main>
+        <section class="about-content">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-text animate-on-scroll">
+                        <h2>你好，我是 hukuanfu 👋</h2>
+                        <p>我是一名热爱技术与创造的开发者。相信技术可以改变世界，也相信好的工具应该让一切变得更简单。</p>
+                        <p>在这个网站上，我分享我的项目、学习笔记和思考。希望通过这些内容，能与他人产生共鸣、交流想法。</p>
+                    </div>
+                    <div class="about-text animate-on-scroll">
+                        <h2>我的价值观</h2>
+                        <ul class="values-list">
+                            <li>持续学习，永远保持好奇心</li>
+                            <li>注重细节，追求高质量输出</li>
+                            <li>开放分享，与他人共同成长</li>
+                            <li>解决问题，而非抱怨问题</li>
+                            <li>简洁至上，复杂的事情简单化</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- 技能栈 -->
-    <section class="section section-dark">
-        <div class="container">
-            <div class="section-title animate-on-scroll">
-                <h2>技能栈</h2>
-                <p>我日常使用的主要工具和技术</p>
+        <section class="section section-dark" aria-labelledby="skills-heading">
+            <div class="container">
+                <div class="section-title animate-on-scroll">
+                    <h2 id="skills-heading">技能栈</h2>
+                    <p>我日常使用的主要工具和技术</p>
+                </div>
+                <div class="features-grid">
+                    <article class="feature-card animate-on-scroll">
+                        <div class="feature-icon" role="img" aria-label="Python 图标">🐍</div>
+                        <h3>Python</h3>
+                        <p>数据分析、自动化脚本、Web 开发</p>
+                    </article>
+                    <article class="feature-card animate-on-scroll">
+                        <div class="feature-icon" role="img" aria-label="前端开发图标">🌐</div>
+                        <h3>前端开发</h3>
+                        <p>HTML/CSS/JavaScript，构建响应式网页</p>
+                    </article>
+                    <article class="feature-card animate-on-scroll">
+                        <div class="feature-icon" role="img" aria-label="Git 图标">🐙</div>
+                        <h3>Git & GitHub</h3>
+                        <p>版本控制、协作开发、CI/CD 流程</p>
+                    </article>
+                    <article class="feature-card animate-on-scroll">
+                        <div class="feature-icon" role="img" aria-label="Linux 图标">🐧</div>
+                        <h3>Linux</h3>
+                        <p>服务器管理、Shell 脚本、DevOps</p>
+                    </article>
+                </div>
             </div>
-            <div class="features-grid">
-                <div class="feature-card animate-on-scroll">
-                    <div class="feature-icon">🐍</div>
-                    <h3>Python</h3>
-                    <p>数据分析、自动化脚本、Web 开发</p>
-                </div>
-                <div class="feature-card animate-on-scroll">
-                    <div class="feature-icon">🌐</div>
-                    <h3>前端开发</h3>
-                    <p>HTML/CSS/JavaScript，构建响应式网页</p>
-                </div>
-                <div class="feature-card animate-on-scroll">
-                    <div class="feature-icon">🐙</div>
-                    <h3>Git & GitHub</h3>
-                    <p>版本控制、协作开发、CI/CD 流程</p>
-                </div>
-                <div class="feature-card animate-on-scroll">
-                    <div class="feature-icon">🐧</div>
-                    <h3>Linux</h3>
-                    <p>服务器管理、Shell 脚本、DevOps</p>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <!-- 页脚 -->
     <footer>
         <div class="footer-content">
-            <div class="footer-links">
-                <a href="index.html">首页</a>
-                <a href="about.html">关于</a>
-                <a href="contact.html">联系</a>
-            </div>
-            <p>&copy; 2025 MySite. All rights reserved.</p>
+            <nav aria-label="页脚导航">
+                <div class="footer-links">
+                    <a href="index.html">首页</a>
+                    <a href="about.html">关于</a>
+                    <a href="contact.html">联系</a>
+                </div>
+            </nav>
+            <p>&copy; 2025 hukuanfu. All rights reserved.</p>
         </div>
     </footer>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "hukuanfu",
+        "url": "https://hukuanfu1220.github.io/my-website/",
+        "jobTitle": "Web Developer",
+        "description": "热爱技术与创造的开发者，专注于 Web 开发和创意设计。"
+    }
+    </script>
 
     <script src="js/main.js"></script>
 </body>
