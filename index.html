@@ -4,26 +4,116 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>我的网站</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-        }
-        .container { text-align: center; padding: 2rem; }
-        h1 { font-size: 3rem; margin-bottom: 1rem; }
-        p { font-size: 1.2rem; opacity: 0.9; }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>欢迎来到我的网站</h1>
-        <p>这是一个部署在 GitHub Pages 上的静态网站</p>
-    </div>
+    <!-- 导航栏 -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">MySite</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" class="active">首页</a></li>
+                <li><a href="about.html">关于</a></li>
+                <li><a href="contact.html">联系</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>欢迎来到我的个人空间</h1>
+            <p>探索、创造、分享——在这里记录我的思考与作品</p>
+            <div class="hero-buttons">
+                <a href="about.html" class="btn btn-primary">了解更多</a>
+                <a href="contact.html" class="btn btn-outline">联系我</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 特性介绍 -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title animate-on-scroll">
+                <h2>特色功能</h2>
+                <p>这里展示了我擅长和热爱的领域</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">🚀</div>
+                    <h3>高效开发</h3>
+                    <p>专注于构建快速、可靠的 Web 应用，追求极致的用户体验</p>
+                </div>
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">🎨</div>
+                    <h3>创意设计</h3>
+                    <p>将美学与功能结合，打造令人眼前一见的界面设计</p>
+                </div>
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">💡</div>
+                    <h3>创新思维</h3>
+                    <p>善于发现问题本质，用创新的方案解决复杂挑战</p>
+                </div>
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">🤝</div>
+                    <h3>团队协作</h3>
+                    <p>良好的沟通能力，能与团队高效协作，共同达成目标</p>
+                </div>
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">📚</div>
+                    <h3>持续学习</h3>
+                    <p>保持好奇心，不断吸收新技术，紧跟行业前沿发展</p>
+                </div>
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">⚡</div>
+                    <h3>解决问题</h3>
+                    <p>面对难题冷静分析，快速定位并高效解决各类问题</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 统计数据 -->
+    <section class="section section-dark">
+        <div class="container">
+            <div class="stats">
+                <div class="stat-item animate-on-scroll">
+                    <h3>10+</h3>
+                    <p>完成项目</p>
+                </div>
+                <div class="stat-item animate-on-scroll">
+                    <h3>3+</h3>
+                    <p>年开发经验</p>
+                </div>
+                <div class="stat-item animate-on-scroll">
+                    <h3>50+</h3>
+                    <p>技术文章</p>
+                </div>
+                <div class="stat-item animate-on-scroll">
+                    <h3>∞</h3>
+                    <p>学习热情</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="index.html">首页</a>
+                <a href="about.html">关于</a>
+                <a href="contact.html">联系</a>
+            </div>
+            <p>&copy; 2025 MySite. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
 </body>
 </html>
