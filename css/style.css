@@ -571,6 +571,17 @@ footer p {
     transform: translateY(0);
 }
 
+/* ===== 工具站推广卡片 ===== */
+.tool-promo-card {
+    position: relative;
+    transition: var(--transition);
+}
+
+.tool-promo-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
 /* ===== 无障碍辅助类 ===== */
 .sr-only {
     position: absolute;

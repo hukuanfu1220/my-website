@@ -3,42 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- SEO 核心 -->
     <title>hukuanfu — 个人作品集 | Web 开发与创意分享</title>
-    <meta name="description" content="hukuanfu 的个人网站，展示 Web 开发项目、技术笔记和创意作品。专注于高效开发、创意设计和持续学习。">
-    <meta name="keywords" content="个人网站, Web开发, 前端开发, 作品集, 技术博客, 创意设计">
+    <meta name="description" content="hukuanfu 的个人网站，展示 Web 开发项目、技术笔记和创意作品。还有免费好用的在线工具箱。">
+    <meta name="keywords" content="个人网站, Web开发, 前端开发, 作品集, 技术博客, 创意设计, 在线工具">
     <meta name="author" content="hukuanfu">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://hukuanfu1220.github.io/my-website/">
-    
-    <!-- 社交媒体预览 (Open Graph) -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="hukuanfu — 个人作品集">
-    <meta property="og:description" content="展示 Web 开发项目、技术笔记和创意作品。">
+    <meta property="og:description" content="展示 Web 开发项目、技术笔记和创意作品，还有免费在线工具箱。">
     <meta property="og:url" content="https://hukuanfu1220.github.io/my-website/">
     <meta property="og:site_name" content="hukuanfu Personal Site">
     <meta property="og:locale" content="zh_CN">
-    
-    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="hukuanfu — 个人作品集">
     <meta name="twitter:description" content="展示 Web 开发项目、技术笔记和创意作品。">
-    
-    <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
-    
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <!-- 导航栏 -->
     <nav>
         <div class="nav-container">
-            <a href="index.html" class="nav-logo" title="回到首页">MySite</a>
+            <a href="index.html" class="nav-logo">hukuanfu</a>
             <ul class="nav-links" id="navLinks">
-                <li><a href="index.html" class="active" aria-label="首页">首页</a></li>
-                <li><a href="about.html" aria-label="关于我">关于</a></li>
-                <li><a href="contact.html" aria-label="联系我">联系</a></li>
+                <li><a href="index.html" class="active">首页</a></li>
+                <li><a href="tools/index.html">🛠 工具站</a></li>
+                <li><a href="about.html">关于</a></li>
+                <li><a href="contact.html">联系</a></li>
             </ul>
             <button class="hamburger" id="hamburger" aria-label="切换导航菜单" aria-expanded="false">
                 <span></span>
@@ -54,8 +46,8 @@
             <h1>欢迎来到我的个人空间</h1>
             <p>探索、创造、分享——在这里记录我的思考与作品</p>
             <div class="hero-buttons">
-                <a href="about.html" class="btn btn-primary">了解更多</a>
-                <a href="contact.html" class="btn btn-outline">联系我</a>
+                <a href="#projects" class="btn btn-primary">查看项目</a>
+                <a href="tools/index.html" class="btn btn-outline">🛠 试试工具站</a>
             </div>
         </div>
     </header>
@@ -103,8 +95,32 @@
             </div>
         </section>
 
+        <!-- 工具站入口横幅 -->
+        <section class="section section-dark" aria-labelledby="tools-cta-heading">
+            <div class="container">
+                <div class="section-title animate-on-scroll">
+                    <h2 id="tools-cta-heading">🛠 在线工具箱</h2>
+                    <p>我开发的实用小工具，免费使用，无需注册</p>
+                </div>
+                <div style="max-width:700px; margin:0 auto;">
+                    <div class="tool-promo-card animate-on-scroll" style="background:var(--white); border-radius:var(--radius); padding:3rem; box-shadow:var(--shadow); text-align:center; position:relative; overflow:hidden;">
+                        <div style="position:absolute; top:0; left:0; right:0; height:4px; background:linear-gradient(90deg, var(--primary), var(--accent));"></div>
+                        <div style="font-size:3rem; margin-bottom:1rem;">🛠️</div>
+                        <h3 style="font-size:1.5rem; margin-bottom:0.8rem; color:var(--dark);">Markdown 编辑器 · 二维码生成 · 密码生成</h3>
+                        <p style="color:var(--gray); margin-bottom:2rem; font-size:1rem;">
+                            三个实用在线工具，全部在浏览器本地运行，保护隐私<br>
+                            无需注册，打开即用
+                        </p>
+                        <a href="tools/index.html" style="display:inline-block; padding:0.9rem 2.5rem; background:linear-gradient(135deg, var(--primary), var(--accent)); color:var(--white); border-radius:50px; font-weight:600; font-size:1.05rem; transition:var(--transition);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 25px rgba(108,92,231,0.3)'" onmouseout="this.style.transform=''; this.style.boxShadow=''">
+                            去使用工具 →
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- 统计数据 -->
-        <section class="section section-dark" aria-labelledby="stats-heading">
+        <section class="section" aria-labelledby="stats-heading">
             <div class="container">
                 <h2 id="stats-heading" class="sr-only">统计数据</h2>
                 <div class="stats">
@@ -135,11 +151,12 @@
             <nav aria-label="页脚导航">
                 <div class="footer-links">
                     <a href="index.html">首页</a>
+                    <a href="tools/index.html">🛠 工具站</a>
                     <a href="about.html">关于</a>
                     <a href="contact.html">联系</a>
                 </div>
             </nav>
-            <p>&copy; 2025 hukuanfu. All rights reserved.</p>
+            <p>&copy; 2025 hukuanfu. 用代码创造价值.</p>
         </div>
     </footer>
 
