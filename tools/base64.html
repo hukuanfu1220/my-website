@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Base64 编解码工具 — 在线转换 | MyTools</title>
+    <meta name="description" content="免费在线 Base64 编码和解码工具，支持文本和图片的 Base64 转换。">
+    <meta name="keywords" content="Base64,编码,解码,在线工具,开发者工具">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://hukuanfu1220.github.io/my-website/tools/base64.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Base64 编解码工具 — 在线转换 | MyTools">
+    <meta property="og:description" content="免费在线 Base64 编码和解码工具。">
+    <meta property="og:url" content="https://hukuanfu1220.github.io/my-website/tools/base64.html">
+    <meta property="og:locale" content="zh_CN">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect x='10' y='10' width='80' height='80' rx='15' fill='%236c5ce7'/><text x='50' y='68' text-anchor='middle' font-size='50' fill='white'>Aa</text></svg>">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">🛠 MyTools</a>
+            <ul class="nav-links">
+                <li><a href="index.html">工具箱</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="tool-page-header">
+        <h1>Aa Base64 编解码</h1>
+        <p>在线 Base64 编码与解码工具</p>
+    </header>
+
+    <main class="tool-container">
+        <div class="tool-box">
+            <div class="input-group">
+                <label for="base64Input">输入文本</label>
+                <textarea id="base64Input" placeholder="输入要编码或解码的文本..." style="min-height:150px;"></textarea>
+            </div>
+            <div class="btn-group">
+                <button class="btn btn-primary" onclick="encodeBase64()">🔒 编码</button>
+                <button class="btn btn-secondary" onclick="decodeBase64()">🔓 解码</button>
+                <button class="btn btn-secondary" onclick="swapBase64()">🔄 交换</button>
+                <button class="btn btn-secondary" onclick="clearBase64()">🗑 清空</button>
+            </div>
+        </div>
+
+        <div class="tool-box">
+            <h3>输出结果</h3>
+            <div class="output-area" id="base64Output" style="background:#f8f9fa;border-radius:8px;padding:1.5rem;min-height:100px;font-family:'Courier New',monospace;font-size:0.9rem;word-break:break-all;color:var(--dark);">结果将在这里显示...</div>
+            <div style="margin-top:1rem;">
+                <button class="btn btn-secondary" onclick="copyBase64()">📋 复制结果</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p style="margin-bottom:0.5rem;"><a href="../index.html" style="color:rgba(255,255,255,0.7);">← 回到 hukuanfu 个人站</a></p>
+            <p>&copy; 2026 MyTools by <a href="../index.html" style="color:rgba(255,255,255,0.7);">hukuanfu</a>. 所有处理在浏览器本地完成。</p>
+        </div>
+    </footer>
+
+    <div class="copied-toast" id="toast">已复制到剪贴板！</div>
+
+    <script src="js/main.js"></script>
+    <script src="js/base64.js"></script>
+</body>
+</html>

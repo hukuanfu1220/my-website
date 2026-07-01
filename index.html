@@ -28,6 +28,8 @@
             <a href="index.html" class="nav-logo">hukuanfu</a>
             <ul class="nav-links" id="navLinks">
                 <li><a href="index.html" class="active">首页</a></li>
+                <li><a href="#projects">项目</a></li>
+                <li><a href="#blog">博客</a></li>
                 <li><a href="tools/index.html">🛠 工具站</a></li>
                 <li><a href="about.html">关于</a></li>
                 <li><a href="contact.html">联系</a></li>
@@ -106,9 +108,9 @@
                     <div class="tool-promo-card animate-on-scroll" style="background:var(--white); border-radius:var(--radius); padding:3rem; box-shadow:var(--shadow); text-align:center; position:relative; overflow:hidden;">
                         <div style="position:absolute; top:0; left:0; right:0; height:4px; background:linear-gradient(90deg, var(--primary), var(--accent));"></div>
                         <div style="font-size:3rem; margin-bottom:1rem;">🛠️</div>
-                        <h3 style="font-size:1.5rem; margin-bottom:0.8rem; color:var(--dark);">Markdown 编辑器 · 二维码生成 · 密码生成</h3>
+                        <h3 style="font-size:1.5rem; margin-bottom:0.8rem; color:var(--dark);">Markdown 编辑器 · 二维码生成 · 密码生成 · JSON 格式化 · Base64 · 文本统计</h3>
                         <p style="color:var(--gray); margin-bottom:2rem; font-size:1rem;">
-                            三个实用在线工具，全部在浏览器本地运行，保护隐私<br>
+                            六个实用在线工具，全部在浏览器本地运行，保护隐私<br>
                             无需注册，打开即用
                         </p>
                         <a href="tools/index.html" style="display:inline-block; padding:0.9rem 2.5rem; background:linear-gradient(135deg, var(--primary), var(--accent)); color:var(--white); border-radius:50px; font-weight:600; font-size:1.05rem; transition:var(--transition);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 25px rgba(108,92,231,0.3)'" onmouseout="this.style.transform=''; this.style.boxShadow=''">
@@ -119,21 +121,112 @@
             </div>
         </section>
 
+        <!-- 项目展示区 -->
+        <section class="section" id="projects" aria-labelledby="projects-heading">
+            <div class="container">
+                <div class="section-title animate-on-scroll">
+                    <h2 id="projects-heading">项目展示</h2>
+                    <p>一些我参与或独立开发的项目</p>
+                </div>
+                <div class="project-grid">
+                    <article class="project-card animate-on-scroll">
+                        <div class="project-icon">🤖</div>
+                        <h3>Hermes Agent</h3>
+                        <p>AI 智能体配置与优化工具集，包含 Skill、Memory、Cron、多 Agent 协同等模块。</p>
+                        <div class="project-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">AI Agent</span>
+                            <span class="tag">Automation</span>
+                        </div>
+                        <a href="https://github.com/hukuanfu1220" target="_blank" rel="noopener noreferrer" class="project-link">查看 GitHub →</a>
+                    </article>
+
+                    <article class="project-card animate-on-scroll">
+                        <div class="project-icon">📱</div>
+                        <h3>小红书自动化发布</h3>
+                        <p>基于 AI 的小红书内容自动生成与发布系统，涵盖选题、文案、配图全流程。</p>
+                        <div class="project-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">AI</span>
+                            <span class="tag">Automation</span>
+                        </div>
+                        <a href="https://github.com/hukuanfu1220" target="_blank" rel="noopener noreferrer" class="project-link">查看 GitHub →</a>
+                    </article>
+
+                    <article class="project-card animate-on-scroll">
+                        <div class="project-icon">🛠</div>
+                        <h3>在线工具箱</h3>
+                        <p>Markdown 编辑器、二维码生成器、密码生成器等实用 Web 工具集合。</p>
+                        <div class="project-tags">
+                            <span class="tag">HTML</span>
+                            <span class="tag">CSS</span>
+                            <span class="tag">JavaScript</span>
+                        </div>
+                        <a href="tools/index.html" class="project-link">使用工具 →</a>
+                    </article>
+
+                    <article class="project-card animate-on-scroll">
+                        <div class="project-icon">🎬</div>
+                        <h3>视频生成工作流</h3>
+                        <p>基于 Agnes AI 的视频生成管线：主题→文案→分镜→图片→视频，全自动流水线。</p>
+                        <div class="project-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">API</span>
+                            <span class="tag">AI Video</span>
+                        </div>
+                        <a href="https://github.com/hukuanfu1220" target="_blank" rel="noopener noreferrer" class="project-link">查看 GitHub →</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- 博客/文章区 -->
+        <section class="section section-dark" id="blog" aria-labelledby="blog-heading">
+            <div class="container">
+                <div class="section-title animate-on-scroll">
+                    <h2 id="blog-heading">最新文章</h2>
+                    <p>技术笔记、经验分享与思考</p>
+                </div>
+                <div class="blog-grid">
+                    <article class="blog-card animate-on-scroll">
+                        <div class="blog-date">2026-07-01</div>
+                        <h3>Hermes Agent 满配优化：从 69 个 Skill 精简到 4 个</h3>
+                        <p>分享如何优化 Hermes Agent 的配置，精简冗余 Skill，提升系统性能和使用效率的完整过程。</p>
+                        <a href="#" class="blog-link">阅读全文 →</a>
+                    </article>
+
+                    <article class="blog-card animate-on-scroll">
+                        <div class="blog-date">2026-06-28</div>
+                        <h3>搭建小红书自动化发布系统</h3>
+                        <p>从零开始构建 AI 驱动的小红书内容生成与发布流程，低成本实现自媒体运营自动化。</p>
+                        <a href="#" class="blog-link">阅读全文 →</a>
+                    </article>
+
+                    <article class="blog-card animate-on-scroll">
+                        <div class="blog-date">2026-06-20</div>
+                        <h3>SSL 证书信任问题排查与修复</h3>
+                        <p>深入分析 WattToolkit 代理导致的 SSL 证书链断裂问题，以及如何彻底修复的系统级解决方案。</p>
+                        <a href="#" class="blog-link">阅读全文 →</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
         <!-- 统计数据 -->
         <section class="section" aria-labelledby="stats-heading">
             <div class="container">
                 <h2 id="stats-heading" class="sr-only">统计数据</h2>
                 <div class="stats">
                     <div class="stat-item animate-on-scroll">
-                        <h3>10+</h3>
-                        <p>完成项目</p>
+                        <h3>4+</h3>
+                        <p>主要项目</p>
+                    </div>
+                    <div class="stat-item animate-on-scroll">
+                        <h3>6</h3>
+                        <p>在线工具</p>
                     </div>
                     <div class="stat-item animate-on-scroll">
                         <h3>3+</h3>
-                        <p>年开发经验</p>
-                    </div>
-                    <div class="stat-item animate-on-scroll">
-                        <h3>50+</h3>
                         <p>技术文章</p>
                     </div>
                     <div class="stat-item animate-on-scroll">
@@ -151,12 +244,14 @@
             <nav aria-label="页脚导航">
                 <div class="footer-links">
                     <a href="index.html">首页</a>
+                    <a href="#projects">项目</a>
+                    <a href="#blog">博客</a>
                     <a href="tools/index.html">🛠 工具站</a>
                     <a href="about.html">关于</a>
                     <a href="contact.html">联系</a>
                 </div>
             </nav>
-            <p>&copy; 2025 hukuanfu. 用代码创造价值.</p>
+            <p>&copy; 2026 hukuanfu. 用代码创造价值.</p>
         </div>
     </footer>
 

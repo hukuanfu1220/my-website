@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文本统计工具 — 字数、行数、字符统计 | MyTools</title>
+    <meta name="description" content="免费在线文本统计工具，支持字数统计、行数统计、字符统计、词数统计等。">
+    <meta name="keywords" content="文本统计,字数统计,字符统计,在线工具,写作工具">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://hukuanfu1220.github.io/my-website/tools/text-stats.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="文本统计工具 — 字数、行数、字符统计 | MyTools">
+    <meta property="og:description" content="免费在线文本统计工具。">
+    <meta property="og:url" content="https://hukuanfu1220.github.io/my-website/tools/text-stats.html">
+    <meta property="og:locale" content="zh_CN">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect x='10' y='10' width='80' height='80' rx='15' fill='%236c5ce7'/><text x='50' y='68' text-anchor='middle' font-size='50' fill='white'>#</text></svg>">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">🛠 MyTools</a>
+            <ul class="nav-links">
+                <li><a href="index.html">工具箱</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="tool-page-header">
+        <h1># 文本统计工具</h1>
+        <p>实时统计文本的字数、行数、字符等信息</p>
+    </header>
+
+    <main class="tool-container">
+        <div class="tool-box">
+            <div class="input-group">
+                <label for="textInput">输入或粘贴文本</label>
+                <textarea id="textInput" placeholder="在这里输入或粘贴你要统计的文本..." style="min-height:250px;"></textarea>
+            </div>
+        </div>
+
+        <div class="tool-box">
+            <h3>统计结果</h3>
+            <div class="stats-grid" id="statsGrid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem;margin-top:1rem;">
+                <div class="stat-box">
+                    <div class="stat-number" id="charCount">0</div>
+                    <div class="stat-label">字符数</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number" id="charCountNoSpace">0</div>
+                    <div class="stat-label">字符数（不含空格）</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number" id="wordCount">0</div>
+                    <div class="stat-label">词数</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number" id="lineCount">0</div>
+                    <div class="stat-label">行数</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number" id="paragraphCount">0</div>
+                    <div class="stat-label">段落数</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number" id="sentenceCount">0</div>
+                    <div class="stat-label">句子数</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number" id="byteSize">0 B</div>
+                    <div class="stat-label">字节大小</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number" id="readTime">0 秒</div>
+                    <div class="stat-label">预计阅读时间</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p style="margin-bottom:0.5rem;"><a href="../index.html" style="color:rgba(255,255,255,0.7);">← 回到 hukuanfu 个人站</a></p>
+            <p>&copy; 2026 MyTools by <a href="../index.html" style="color:rgba(255,255,255,0.7);">hukuanfu</a>. 所有处理在浏览器本地完成。</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/text-stats.js"></script>
+</body>
+</html>
