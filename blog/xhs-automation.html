@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我用AI搭建了小红书自动化发布系统，成本不到1块钱 - hukuanfu的博客</title>
+    <meta name="description" content="从零搭建小红书自动化发布系统：选题→文案→配图→发布全流程自动化。用了Hermes Agent + Agnes AI API，每天自动发一篇笔记，成本不到1块钱。记录完整实现过程。">
+    <meta name="keywords" content="小红书自动化, AI写作, 内容自动化, Hermes Agent, Agnes AI, 自媒体运营, Python自动化">
+    <meta name="author" content="hukuanfu">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://hukuanfu1220.github.io/my-website/blog/xhs-automation.html">
+    
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="我用AI搭建了小红书自动化发布系统，成本不到1块钱">
+    <meta property="og:description" content="从零搭建小红书自动化发布系统全流程记录。">
+    <meta property="og:url" content="https://hukuanfu1220.github.io/my-website/blog/xhs-automation.html">
+    <meta property="og:site_name" content="hukuanfu的个人站">
+    <meta property="og:locale" content="zh_CN">
+    <meta property="article:published_time" content="2026-06-28T00:00:00+08:00">
+    <meta property="article:modified_time" content="2026-07-01T00:00:00+08:00">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="我用AI搭建了小红书自动化发布系统，成本不到1块钱">
+    <meta name="twitter:description" content="从零搭建小红书自动化发布系统全流程记录。">
+    
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="blog.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">hukuanfu</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="../index.html">首页</a></li>
+                <li><a href="../index.html#projects">项目</a></li>
+                <li><a href="../index.html#blog">博客</a></li>
+                <li><a href="../tools/index.html">🛠 工具站</a></li>
+                <li><a href="../about.html">关于</a></li>
+                <li><a href="../contact.html">联系</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="切换导航菜单" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <article class="blog-post">
+        <header class="blog-post-header">
+            <a href="../index.html#blog" class="blog-back-link">← 返回博客列表</a>
+            <h1>我用AI搭建了小红书自动化发布系统，成本不到1块钱</h1>
+            <div class="blog-meta">
+                <time datetime="2026-06-28">2026年6月28日</time>
+                <span>·</span>
+                <span>约 12 分钟阅读</span>
+                <span>·</span>
+                <span>分类：自动化 / 自媒体</span>
+            </div>
+        </header>
+
+        <div class="blog-post-content">
+            <p>最近看了一个教程，说可以用 AI 自动发小红书。我试了一下，发现确实可行，而且成本很低。今天就把这个系统的搭建过程记录下来，给想做的同学参考。</p>
+
+            <p>先说结论：<strong>选题 + 文案 + 配图 + 发布</strong>这四个环节，我全部用 Python 脚本串起来了。每天早上 9 点自动跑一次，一天一篇笔记。每篇的成本大概在 0.3~0.8 元之间（主要是 AI API 调用费）。</p>
+
+            <h2>系统架构</h2>
+
+            <p>整个系统由 5 个模块组成，数据流是单向的：</p>
+
+            <pre><code>热点选题 → AI文案生成 → AI配图生成 → 发布 → 通知</code></pre>
+
+            <p>每个模块独立运行，上一个模块的输出是下一个模块的输入。模块之间用 JSON 日志文件传递数据，这样即使某个环节失败了，也不会影响整个流程。</p>
+
+            <h2>第一步：热点选题</h2>
+
+            <p>选题是内容创作的起点。我用的方法是——从 Hacker News 和 36氪 抓取当天热门话题，然后让 AI 从中筛选出适合小红书的选题。</p>
+
+            <p>代码不长，核心逻辑就几行：</p>
+
+            <pre><code>def get_hot_topics():
+    """从多个来源获取热点话题"""
+    topics = []
+    
+    # 从 Hacker News API 获取热门
+    hn_data = requests.get(
+        "https://hacker-news.firebaseio.com/v0/topstories.json"
+    ).json()[:20]
+    
+    for story_id in hn_data:
+        story = requests.get(
+            f"https://hacker-news.firebaseio.com/v0/item/{story_id}.json"
+        ).json()
+        topics.append({
+            "title": story.get("title", ""),
+            "url": story.get("url", ""),
+            "score": story.get("score", 0),
+            "source": "HackerNews"
+        })
+    
+    # 再用 AI 筛选适合小红书的选题
+    selected = ai_select_topic(topics)
+    return selected</code></pre>
+
+            <p>实际跑下来，AI 会优先选那些跟 <strong>AI 工具、效率提升、省钱技巧</strong> 相关的内容——这些在小红书上流量比较大。</p>
+
+            <h2>第二步：AI 生成文案</h2>
+
+            <p>文案生成是核心环节。我接的是 Agnes AI 的 API，用 <code>agnes-2.0-flash</code> 模型来写。</p>
+
+            <p>小红书文案有它的固定套路，我在 prompt 里写死了：</p>
+
+            <pre><code>PROMPT_TEMPLATE = """
+你是一个小红书博主，擅长写种草和干货类笔记。
+
+选题：{topic}
+关键词：{keywords}
+
+请按照以下格式写一篇小红书笔记：
+1. 标题：要有emoji，吸引点击，控制在20字以内
+2. 正文：口语化，分段清晰，多用emoji
+3. 标签：5-8个话题标签
+
+注意：不要出现"作为一个AI"这类话，要像真人写的。
+"""</code></pre>
+
+            <p>生成的文案大概长这样：</p>
+
+            <blockquote>
+                <p>🔥 我发现了一个超好用的AI工具，免费！</p>
+                <p>最近在做内容自动化，试了好几个方案，最后发现这个最好用...</p>
+                <p>#AI工具 #效率提升 #自动化 #小红书运营</p>
+            </blockquote>
+
+            <p>API 调用的费用大概是 <strong>0.05~0.15 元/篇</strong>，取决于文案长度。</p>
+
+            <h2>第三步：AI 生成配图</h2>
+
+            <p>配图我用的是 Agnes AI 的图片生成 API。流程是先让 AI 把文案浓缩成一段图片描述，然后再调用图片生成接口。</p>
+
+            <pre><code># 先生成图片描述
+image_prompt = agnes_ai.generate(
+    model="agnes-2.0-flash",
+    prompt=f"根据以下文案，生成一张适合小红书的封面图描述：{copy_text}",
+    max_tokens=200
+)
+
+# 再生成图片
+image_url = agnes_ai.generate_image(
+    prompt=image_prompt,
+    size="1080x1350",  # 小红书竖图比例
+    style="modern"
+)</code></pre>
+
+            <p>配图的费用大概是 <strong>0.2~0.5 元/张</strong>。小红书笔记一般配 3-9 张图，所以我目前只生成 1 张封面图，其余的用纯色背景 + 文字的方式代替——省了不少钱。</p>
+
+            <h2>第四步：发布笔记</h2>
+
+            <p>这一步是最棘手的。小红书的 API 不对个人开发者开放，所以没法直接调用接口发布。</p>
+
+            <p>我目前的方案是用 <strong>测试模式</strong>——脚本生成好文案和配图后，把内容保存为 JSON 文件，手动复制到小红书发布。等找到合适的自动化工具（比如浏览器自动化方案），再接入真实发布。</p>
+
+            <p>发布模块的代码结构：</p>
+
+            <pre><code>def publish_note(topic, copy, images):
+    if ENABLE_AUTO_PUBLISH:
+        # TODO: 接入浏览器自动化发布
+        pass
+    else:
+        # 保存到本地，等待手动发布
+        save_to_drafts(topic, copy, images)
+        print(f"✅ 草稿已保存: drafts/{topic}.json")</code></pre>
+
+            <h2>第五步：通知</h2>
+
+            <p>每次流程跑完，我会通过飞书 Webhook 发一条通知到群里：</p>
+
+            <pre><code>def send_notification(status, content):
+    payload = {
+        "msg_type": "interactive",
+        "card": {
+            "header": {
+                "title": {"tag": "plain_text", "content": f"📝 小红书日报 - {status}"},
+                "template": "green" if status == "success" else "red"
+            },
+            "elements": [{
+                "tag": "markdown",
+                "content": content
+            }]
+        }
+    }
+    requests.post(WEBHOOK_URL, json=payload)</code></pre>
+
+            <h2>定时执行</h2>
+
+            <p>最后一步是把整个流程串起来，设成每天自动运行。我用了 Hermes Agent 的 Cron 功能：</p>
+
+            <pre><code># 每天上午 9 点执行
+hermes cron create \
+  --name "XHS Daily Publisher" \
+  --schedule "0 9 * * *" \
+  --script /home/hukuanfu/xhs-automation/main.py \
+  --deliver feishu</code></pre>
+
+            <p>这样每天早上 9 点，系统就会自动跑一遍选题→文案→配图→发布的流程。</p>
+
+            <h2>成本核算</h2>
+
+            <p>算了一笔账，每天发一篇的成本：</p>
+
+            <table>
+                <thead>
+                    <tr><th>项目</th><th>单次费用</th><th>月费用</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>文案生成（AI）</td><td>¥0.10</td><td>¥3.00</td></tr>
+                    <tr><td>配图生成（AI）</td><td>¥0.30</td><td>¥9.00</td></tr>
+                    <tr><td>选题搜索</td><td>免费</td><td>¥0</td></tr>
+                    <tr><td>服务器（自有）</td><td>¥0</td><td>¥0</td></tr>
+                    <tr><td><strong>合计</strong></td><td><strong>¥0.40</strong></td><td><strong>≈ ¥12/月</strong></td></tr>
+                </tbody>
+            </table>
+
+            <p>一个月 12 块钱，一天一篇，这成本我觉得可以接受。当然，如果用更便宜的模型或者批量生成图片，成本还能再压低。</p>
+
+            <h2>遇到的问题</h2>
+
+            <h3>问题1：API 令牌经常失效</h3>
+
+            <p>跑了几天后发现，Agnes AI 的 API Key 有时候会返回 401 错误。查了一下是因为 token 有过期时间，需要定期刷新。解决办法是在脚本里加了自动重试和降级逻辑——API 挂了就用缓存的默认文案。</p>
+
+            <h3>问题2：小红书反爬越来越严</h3>
+
+            <p>之前有人用浏览器自动化（Playwright）直接操作小红书发布，但最近小红书的反爬机制加强了，IP 被封的概率很高。所以我暂时放弃了全自动发布的方案，改用半自动——AI 生成内容，手动发布。</p>
+
+            <h3>问题3：内容同质化</h3>
+
+            <p>AI 生成的文案容易千篇一律。解决办法是在 prompt 里加了"差异化"的要求，比如每次随机选择不同的开头方式、插入个人经历、引用具体数据等。人工审核也很必要——发之前看一眼，把明显 AI 味的句子改掉。</p>
+
+            <h2>后续优化方向</h2>
+
+            <ol>
+                <li><strong>接入更多数据源</strong>：除了 Hacker News，还可以抓微博热搜、知乎热榜、B站热门</li>
+                <li><strong>A/B 测试选题</strong>：同一选题生成两种不同风格的文案，看哪种效果好</li>
+                <li><strong>数据分析</strong>：记录每篇笔记的阅读量和互动数据，反哺选题和文案生成</li>
+                <li><strong>多平台分发</strong>：一套内容适配小红书、公众号、知乎等不同平台</li>
+            </ol>
+
+            <h2>写在最后</h2>
+
+            <p>这套系统目前还在实验阶段，但跑通之后的感觉确实不错。<strong>AI 做内容生产的效率提升是实实在在的</strong>——以前写一篇笔记要花 1-2 小时，现在 AI 生成初稿只要几分钟，我再花 10 分钟修改就行。</p>
+
+            <p>当然，AI 不能完全替代人的判断。选题的方向、文案的语气、配图的风格，这些还是需要人来把关。但把重复性的工作交给 AI，人专注在创意和策略上，这个分工我觉得是对的。</p>
+
+            <p>如果你对这套系统感兴趣，或者想聊聊内容自动化的事，可以通过 <a href="../contact.html">联系我</a> 页面找到我。</p>
+
+            <hr>
+
+            <p class="blog-footer-note">想了解我平时用的开发工具？来我的 <a href="../tools/index.html">在线工具箱</a> 逛逛，有 Markdown 编辑器、二维码生成器和密码生成器，都是我自己写的。</p>
+        </div>
+
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": "我用AI搭建了小红书自动化发布系统，成本不到1块钱",
+            "description": "从零搭建小红书自动化发布系统全流程记录，选题→文案→配图→发布，每月成本约12元。",
+            "author": {
+                "@type": "Person",
+                "name": "hukuanfu"
+            },
+            "publisher": {
+                "@type": "Organization",
+                "name": "hukuanfu的个人站",
+                "url": "https://hukuanfu1220.github.io/my-website/"
+            },
+            "datePublished": "2026-06-28",
+            "dateModified": "2026-07-01",
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://hukuanfu1220.github.io/my-website/blog/xhs-automation.html"
+            },
+            "keywords": ["小红书自动化", "AI写作", "内容自动化", "Hermes Agent", "Agnes AI"],
+            "articleSection": "自动化"
+        }
+        </script>
+    </article>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 hukuanfu. 用代码创造价值.</p>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>
